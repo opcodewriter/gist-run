@@ -1,0 +1,54 @@
+<template>
+    <ai-dialog class="select-gist-dialog">
+        <ai-dialog-body>
+            <h3>Open gist</h3>
+            <div class="gist-list-header">
+                <input class="input-mini" type="text" value.bind="keyword" placeholder="Search...">
+                <div class="right">
+                    <span>Sort:</span>
+                    <form>
+                        <select class="select-sm" value.bind="sortBy">
+                            <option value="dateCreated,desc">Recently created</option>
+                            <option value="dateCreated,asc">Least recently created</option>
+                            <option value="dateUpdated,desc">Recently updated</option>
+                            <option value="dateUpdated,asc">Least recently updated</option>
+                        </select>
+                    </form>
+                    <span class="m-l-10">Filter:</span>
+                    <form>
+                        <select class="select-sm" value.bind="privacyState">
+                            <option value="3">Public & Secret</option>
+                            <option value="2">Public only</option>
+                            <option value="1">Secret only</option>
+                        </select>
+                    </form>
+                </div>
+            </div>
+
+            <div class="gist-list-panel">
+                <div if.bind="!loading" class="menu gist-list">
+                    <a repeat.for="gist of gists" class="menu-item ${currentGist === gist ? 'selected' : ''}" href="#" click.delegate="currentGist = gist"
+                    ga ga-category="gist-list" ga-action="gist">
+                        <span class="${gist.description ? '' : 'unnamed-file'}">${gist.description ? gist.description : 'No description'}</span>
+                        <br>
+                        <!--<small>${gist.id}</small>
+                        <br> -->
+                        <span if.bind="!gist.public" class="octicon octicon-lock"></span><small class="file-count">${gist.fileItems.length} files</small>
+                        <!--<br>
+                        <small >${gist.dateCreated} files</small>
+                        <br>
+                        <small >${gist.dateUpdated} files</small> -->
+                    </a>
+                </div>
+                <div if.bind="loading" class="spinner-wrapper">
+                    <img src="img/octocat-spinner-32.gif" class="spinner">
+                </div>
+            </div>
+        </ai-dialog-body>
+
+        <ai-dialog-footer>
+            <button class="btn m-l-5 au-target" click.trigger="controller.cancel()">Cancel</button>
+            <button class="btn m-l-5 au-target" disabled.bind="currentGist == null" click.trigger="controller.ok(currentGist)">OK</button>
+        </ai-dialog-footer>
+    </ai-dialog>
+</template>

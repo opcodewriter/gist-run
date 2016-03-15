@@ -75,4 +75,15 @@ export class Gists {
       })
       .then(fork => this.load(fork.id));
   }
+  
+  list() {
+      return this.api.fetch(`gists`)
+        .then(response => {
+            if (response.ok) {
+          return response.json();
+        }
+        // todo: handle rate limit, etc
+        throw new Error('unable to list gists');
+      });
+  }
 }

@@ -1,5 +1,7 @@
 export function configure(aurelia) {
-  aurelia.use.standardConfiguration();
+  aurelia.use
+         .standardConfiguration()
+         .plugin('aurelia-dialog');
 
   aurelia.start()
     .then(() => {

@@ -51,6 +51,10 @@ edit-session-commands {
   margin-left: 5px;
 }
 
+.m-l-10 {
+  margin-left: 10px;
+}
+
 /* Splitter */
 .gutter: hover {
   background-color: #eee;
@@ -174,4 +178,44 @@ result-panel iframe {
 .menu-item {
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.gist-list-panel
+{
+    margin-top: 10px;
+    height: 500px;
+    width: 800px;
+    overflow-y: auto;
+}
+
+.gist-files
+{
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.gist-list-header form
+{
+    display: inline-block;
+}
+
+.spinner-wrapper 
+{
+    display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	-webkit-box-align: center;
+
+	align-items: center;
+    height: 100%;
+}
+
+.spinner 
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }

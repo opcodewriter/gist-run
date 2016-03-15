@@ -38,4 +38,12 @@
           ga ga-category="nav-panel" ga-action="new">
     New Gist
   </button>
+  
+   <button class="btn btn-sm right" type="button"
+          show.bind="user.authenticated"
+          disabled.bind="user.loading"
+          click.delegate="openGist()"
+          ga ga-category="header" ga-action="open-gist">
+    Open Gist
+  </button>  
 </template>
